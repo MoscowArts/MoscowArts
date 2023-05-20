@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoscowArts.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230520155820_init")]
+    [Migration("20230520185048_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -33,7 +33,11 @@ namespace MoscowArts.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -53,6 +57,12 @@ namespace MoscowArts.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("text");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
 
                     b.Property<string>("RefreshToken")
                         .IsRequired()

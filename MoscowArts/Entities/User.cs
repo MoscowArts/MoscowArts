@@ -8,9 +8,13 @@ namespace MoscowArts.Entities
         [Required] public string Name { get; set; } = "";
         [Required] public string Surname { get; set; } = "";
         public string? Patronymic { get; set; }
-        [EmailAddress] public string? Email { get; set; }
-        [Phone] public string? Phone { get; set; }
+        [EmailAddress] public string Email { get; set; }
+        public string? Phone { get; set; } 
+        public int? Age { get; set; }
+        public string? Photo { get; set; }
         [Required] public DateTime RegistrationDate { get; set; }
+
+        public int Rating { get; set; }
 
         //[Required] public string Username { get; set; } = "";
         public byte[] PasswordHash { get; set; }
