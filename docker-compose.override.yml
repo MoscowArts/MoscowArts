@@ -4,9 +4,10 @@ services:
   moscowarts:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;
+      - ASPNETCORE_URLS=https://+:4433;http://+:8000
     ports:
-      - "443"
+      - "8000"
+      - "4433"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
