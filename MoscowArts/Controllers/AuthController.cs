@@ -38,21 +38,20 @@ namespace MoscowArts.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDTO request)
         {
-            var user = (await _userService.FindAsync(u => u.Email == request.Email)).FirstOrDefault();
-            if (user == null)
-                return BadRequest();
 
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.Email = request.Email;
-            user.Name = request.Name;
-            user.Surname = request.Surname;
-            user.Patronymic = request.Patronymic;
-            user.Phone = request.Phone;
-            user.Age = request.Age;
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-
+            User user = new User
+            {
+                Email = request.Email,
+                Name = request.Name,
+                Surname = request.Surname,
+                Patronymic = request.Patronymic,
+                Phone = request.Phone,
+                Age = request.Age,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+            };
 
             await _userService.AddAsync(user);
 
